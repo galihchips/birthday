@@ -1,103 +1,89 @@
+"use client";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import Confetti from "react-confetti";
 import Image from "next/image";
+import "@/app/globals.css";
 
-export default function Home() {
+export default function BirthdayPage() {
+  const girlfriendName = "Angel";
+  const birthDate = new Date("June 19, 2025 00:00:00");
+
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+  const [showWishCard, setShowWishCard] = useState(false);
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+    }
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-pink-100 text-center p-4 relative overflow-hidden">
+      <Confetti width={windowSize.width} height={windowSize.height} />
+      
+      {/* Floating Balloons */}
+      
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+      {/* Main Birthday Card */}
+      <motion.div
+        initial={{ y: 0 }}
+        animate={showWishCard ? { y: -5 } : { y: 0 }}
+        transition={{ duration: 1, ease: "easeInOut" }}
+        className="bg-white p-8 rounded-3xl shadow-xl max-w-md border-4 border-pink-400 relative text-center"
+      >
+        <h1 className="text-6xl font-birthday text-pink-600 drop-shadow-lg">
+          Happy Birthday, {girlfriendName}!
+        </h1>
+
+        <div className="mt-6 flex justify-center">
+          <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-pink-400 shadow-lg">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src="/angel.jpg"
+              alt="Birthday Girl"
+              width={160}
+              height={160}
+              className="object-cover w-full h-full"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+
+        <button
+          onClick={() => setShowWishCard(true)}
+          className="mt-6 bg-pink-500 text-white px-6 py-2 rounded-lg shadow-lg hover:bg-pink-600 transition"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          Reveal My Wish 💖
+        </button>
+      </motion.div>
+
+      {/* Birthday Wish Card */}
+      {showWishCard && (
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="bg-white p-6 rounded-3xl shadow-xl max-w-lg border-4 border-pink-400 mt-10 text-center"
         >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          <h2 className="text-3xl font-birthday text-pink-500">My Love Letter to You 💖</h2>
+          <p className="text-gray-700 mt-4 leading-relaxed">
+            From the moment you walked into my life, you've filled it with warmth, laughter, and love.
+            You are my home, my heart, and my greatest joy. Today is all about celebrating you—the most beautiful soul I know.
+          </p>
+          <p className="text-gray-700 mt-4 leading-relaxed">
+            I hope this year brings you as much happiness as you bring to me every single day. No matter where life takes us,
+            I’ll always be right here, loving you with everything I have.
+          </p>
+          <p className="text-pink-600 mt-6 font-semibold text-lg">Happy Birthday, my forever love. 🎈💫</p>
+        </motion.div>
+      )}
+      <motion.div className="absolute top-10 left-10 text-4xl animate-bounce">🎈</motion.div>
+      <motion.div className="absolute top-20 right-10 text-4xl animate-bounce">🎈</motion.div>
+      <motion.div className="absolute bottom-10 left-1/4 text-4xl animate-bounce">🎈</motion.div>
     </div>
   );
 }
