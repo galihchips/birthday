@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Birthstone } from "next/font/google"; 
+import { Birthstone } from "next/font/google"; 
 import "./globals.css";
 
 
-const pacifico = Birthstone({ 
-  variable: "--font-pacifico", 
+const birthstone = Birthstone({ 
+  variable: "--font-birthstone", 
   weight: "400", 
   subsets: ["latin"] 
 });
@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${pacifico.variable} antialiased`}
+        className={`${birthstone.variable} antialiased`}
       >
         {children}
       </body>
