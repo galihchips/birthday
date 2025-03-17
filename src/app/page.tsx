@@ -9,10 +9,9 @@ export default function BirthdayPage() {
   const girlfriendName = "Angel";
   const birthDate = new Date("June 19, 2025 00:00:00");
 
-
   const [showWishCard, setShowWishCard] = useState(false);
-
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
+  const [confettiPieces, setConfettiPieces] = useState(300); // Initial number of pieces
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -30,14 +29,35 @@ export default function BirthdayPage() {
     }
   }, []);
 
+  useEffect(() => {
+    if (showWishCard) {
+      const interval = setInterval(() => {
+        setConfettiPieces((prev) => Math.max(prev - 20, 0)); // Decrease gradually
+      }, 200);
+
+      return () => clearInterval(interval);
+    } else {
+      setConfettiPieces(300); // Reset when hiding the card
+    }
+  }, [showWishCard]);
+
+  const onClickShowWishCard = () => {
+    setShowWishCard(!showWishCard);
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-pink-100 text-center p-4 relative overflow-hidden">
-      <Confetti width={windowSize.width} height={windowSize.height} />
-
-      {/* Floating Balloons */}
-
-
-      {/* Main Birthday Card */}
+      <Confetti
+        width={windowSize.width}
+        height={windowSize.height}
+        numberOfPieces={confettiPieces}
+        gravity={0.3} // Slows down the fall for a floaty effect
+        wind={0.01} // Adds slight side movement
+        tweenDuration={5000} // Ensures smooth animation
+        initialVelocityX={5} // Slight horizontal burst
+        initialVelocityY={10} // Stronger upward burst
+        //colors={["#ff4d6d", "#ff85a1", "#ffb3c6", "#ffd6e0", "#ffc107", "#ff5722"]} // Warm, festive colors
+      />
       <motion.div
         initial={{ y: 0 }}
         animate={showWishCard ? { y: -5 } : { y: 0 }}
@@ -61,10 +81,10 @@ export default function BirthdayPage() {
         </div>
 
         <button
-          onClick={() => setShowWishCard(true)}
+          onClick={onClickShowWishCard}
           className="mt-6 bg-pink-500 text-white px-6 py-2 rounded-lg shadow-lg hover:bg-pink-600 transition"
         >
-          Reveal My Wish 💖
+          {!showWishCard ? "Reveal My Wish 💖" : "Hide"}
         </button>
       </motion.div>
 
@@ -90,7 +110,7 @@ export default function BirthdayPage() {
       )}
       <motion.div className="absolute top-10 left-10 text-4xl animate-bounce">🎈</motion.div>
       <motion.div className="absolute top-20 right-10 text-4xl animate-bounce">🎈</motion.div>
-      <motion.div className="absolute bottom-10 left-1/4 text-4xl animate-bounce">🎈</motion.div>
+      {/* <motion.div className="absolute bottom-10 left-1/6 text-4xl animate-bounce">🎈</motion.div> */}
     </div>
   );
 }
