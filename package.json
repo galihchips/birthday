@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "build": "next build",
     "deploy": "yarn build && gh-pages -d out"
   },
   "dependencies": {
