@@ -9,26 +9,33 @@ export default function BirthdayPage() {
   const girlfriendName = "Angel";
   const birthDate = new Date("June 19, 2025 00:00:00");
 
-  const [windowSize, setWindowSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
+
   const [showWishCard, setShowWishCard] = useState(false);
 
+  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
+
   useEffect(() => {
-    function handleResize() {
-      setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+    if (typeof window !== "undefined") {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+
+      function handleResize() {
+        setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+      }
+
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
     }
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-pink-100 text-center p-4 relative overflow-hidden">
       <Confetti width={windowSize.width} height={windowSize.height} />
-      
+
       {/* Floating Balloons */}
-      
+
 
       {/* Main Birthday Card */}
       <motion.div
