@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Birthstone } from "next/font/google"; 
+import { Birthstone, Playfair_Display, Raleway, Handlee } from "next/font/google"; 
 import "./globals.css";
 
 
@@ -8,6 +8,9 @@ const birthstone = Birthstone({
   weight: "400", 
   subsets: ["latin"] 
 });
+const playfair = Playfair_Display({ variable: "--font-playfair",  subsets: ["latin"], weight: "700" });
+const handlee = Handlee({ variable: "--font-handlee",  subsets: ["latin"], weight: "400" });
+const raleway = Raleway({ variable: "--font-raleway",  subsets: ["latin"], weight: "400" });
 
 export const metadata: Metadata = {
   title: "Happy Birthday",
@@ -36,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${birthstone.variable} antialiased`}
+        className={`${birthstone.variable} ${playfair.variable} ${raleway.variable} ${handlee.variable} antialiased`}
       >
         {children}
       </body>

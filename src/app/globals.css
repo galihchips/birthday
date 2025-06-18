@@ -11,6 +11,9 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-birthday: var(--font-birthstone);
+  --font-playfair: var(--font-playfair);
+  --font-raleway: var(--font-raleway);
+  --font-handlee: var(--font-handlee);
 }
 
 /* @media (prefers-color-scheme: dark) {
