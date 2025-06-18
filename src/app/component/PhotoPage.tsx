@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const photos = [
   "/images/p1.JPG",
@@ -60,27 +60,30 @@ export default function PhotoPage({ onNext, onBack }: PhotoPageProps) {
   );
 }
 
-function PhotoCard({ src, isSpecial, index }: { src: string; isSpecial: boolean; index: number }) {
-  const [loaded, setLoaded] = useState(false);
-  const [delayedVisible, setDelayedVisible] = useState(false);
+function PhotoCard({
+  src,
+  isSpecial,
+  index,
+}: {
+  src: string;
+  isSpecial: boolean;
+  index: number;
+}) {
+  const [visible, setVisible] = useState(false);
 
-  // Delay the reveal for each photo (1s per index)
-  useState(() => {
-    const timeout = setTimeout(() => {
-      setDelayedVisible(true);
-    }, index * 1000);
-    return () => clearTimeout(timeout);
-  });
+  useEffect(() => {
+    const delay = setTimeout(() => setVisible(true), index * 1000);
+    return () => clearTimeout(delay);
+  }, [index]);
+
+  if (!visible) return null;
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: delayedVisible ? 1 : 0 }}
-      transition={{ duration: 0.5 }}
-      className={`relative group w-full max-w-[160px] aspect-square border-4 border-pink-300 rounded-xl shadow-md p-2 bg-white flex items-center justify-center transition-all duration-500 hover:shadow-xl hover:scale-105 ${isSpecial ? "col-span-2 mx-auto" : ""
-        }`}
+    <div
+      className={`relative group w-full max-w-[160px] aspect-square border-4 border-pink-300 rounded-xl shadow-md bg-white flex items-center justify-center transition-all duration-500 hover:shadow-xl hover:scale-105 ${
+        isSpecial ? "col-span-2 mx-auto" : ""
+      }`}
     >
-      {/* Decorations */}
       {!isSpecial && (
         <div className="absolute -top-3 -left-3 text-2xl rotate-[-15deg] z-10">🎀</div>
       )}
@@ -88,22 +91,30 @@ function PhotoCard({ src, isSpecial, index }: { src: string; isSpecial: boolean;
         <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-3xl z-10">👑</div>
       )}
 
-      {/* Static placeholder background to avoid flicker */}
-      <div className="absolute inset-0 bg-gray-200 z-0 rounded-md" />
-
-      {/* Image */}
-      <Image
-        src={src}
-        alt="Photo"
-        width={140}
-        height={140}
-        className={`object-cover w-full h-full z-10 transition-opacity duration-700 ${loaded ? "opacity-100" : "opacity-0"
-          }`}
-        onLoad={() => setLoaded(true)}
-        loading="eager"
-        priority
-      />
-    </motion.div>
+      {/* Animate image inside a padded box */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6 }}
+        className="w-full h-full p-2" // <- padding between image and frame
+      >
+        <div className="w-full h-full rounded-md overflow-hidden">
+          <Image
+            src={src}
+            alt="Photo"
+            width={140}
+            height={140}
+            className="object-cover w-full h-full"
+            loading="eager"
+            priority
+            style={{
+              backfaceVisibility: "hidden",
+              transformStyle: "preserve-3d",
+            }}
+          />
+        </div>
+      </motion.div>
+    </div>
   );
 }
 
