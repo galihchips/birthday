@@ -38,7 +38,7 @@ export default function PhotoPage({ onNext, onBack }: PhotoPageProps) {
         {/* Grid */}
         <div className="grid grid-cols-2 gap-4 place-items-center">
           {photos.map((src, i) => (
-            <PhotoCard key={i} src={src} isSpecial={i === 4} index={i} />
+            <PhotoCard key={i} src={src} isSpecial={i === 4} />
           ))}
         </div>
 
@@ -60,22 +60,15 @@ export default function PhotoPage({ onNext, onBack }: PhotoPageProps) {
   );
 }
 
-function PhotoCard({ src, isSpecial, index }: { src: string; isSpecial: boolean; index: number }) {
-  const [visible, setVisible] = useState(false);
-
-  // Delay each card's visibility
-  useState(() => {
-    const delay = setTimeout(() => {
-      setVisible(true);
-    }, index * 1000); // 1 second per card
-    return () => clearTimeout(delay);
-  });
+// 👇 Each photo card
+function PhotoCard({ src, isSpecial }: { src: string; isSpecial: boolean }) {
+  const [loaded, setLoaded] = useState(false);
 
   return (
     <motion.div
       initial={{ opacity: 0 }}
-      animate={{ opacity: visible ? 1 : 0 }}
-      transition={{ duration: 0.6 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
       className={`relative group w-full max-w-[160px] aspect-square border-4 border-pink-300 rounded-xl shadow-md p-2 bg-white flex items-center justify-center transition-all duration-500 hover:shadow-xl hover:scale-105 ${isSpecial ? "col-span-2 mx-auto" : ""}`}
     >
       {!isSpecial && (
@@ -86,22 +79,21 @@ function PhotoCard({ src, isSpecial, index }: { src: string; isSpecial: boolean;
       )}
 
       {/* Placeholder */}
-      {!visible && (
+      {!loaded && (
         <div className="absolute inset-0 bg-gray-200 animate-pulse rounded-md z-0" />
       )}
 
       {/* Image */}
-      {visible && (
-        <Image
-          src={src}
-          alt="Photo"
-          width={140}
-          height={140}
-          className="object-cover w-full h-full transition-opacity duration-700 z-10 opacity-100"
-          loading="eager"
-          priority
-        />
-      )}
+      <Image
+        src={src}
+        alt="Photo"
+        width={140}
+        height={140}
+        className={`object-cover w-full h-full transition-opacity duration-700 z-10 ${loaded ? "opacity-100" : "opacity-0"}`}
+        onLoad={() => setLoaded(true)}
+        loading="eager" // force load immediately (no lazy delay)
+        priority // hint to preload
+      />
     </motion.div>
   );
 }
