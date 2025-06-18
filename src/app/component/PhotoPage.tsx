@@ -59,8 +59,7 @@ export default function PhotoPage({ onNext, onBack }: PhotoPageProps) {
                 width={140}
                 height={140}
                 loading="lazy"
-                className="rounded-lg object-cover w-full h-full transition-opacity duration-700 opacity-0 group-hover:opacity-100"
-                onLoadingComplete={(img) => img.classList.remove("opacity-0")}
+                className="object-cover w-full h-full bg-gray-100 transition duration-1000 ease-out"
               />
             </motion.div>
           ))}
