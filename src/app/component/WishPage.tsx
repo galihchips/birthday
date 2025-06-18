@@ -13,7 +13,7 @@ type WishPageProps = {
 
 export default function WishPage({ onFinish, onBack }: WishPageProps) {
   return (
-    <div className="h-screen bg-pink-100 items-center justify-center overflow-y-auto">
+    <div className="h-screen bg-pink-100 items-center justify-center overflow-y-auto hide-scrollbar">
       <button
         onClick={onBack}
         className="absolute top-4 left-4 z-20 px-4 py-2 text-sm bg-white text-pink-700 rounded-full shadow hover:bg-white transition font-raleway"
@@ -55,7 +55,7 @@ export default function WishPage({ onFinish, onBack }: WishPageProps) {
               onClick={onFinish}
               className="mt-6 px-6 py-2 bg-pink-600 text-white font-raleway rounded-lg hover:bg-pink-700 transition duration-300"
             >
-              Finish
+              Continue →
             </button>
           </div>
         </div>

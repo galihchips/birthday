@@ -17,7 +17,7 @@ type PhotoPageProps = {
 export default function PhotoPage({ onNext, onBack }: PhotoPageProps) {
   return (
     <div className="flex w-full h-screen bg-white">
-      <div className="w-full p-6 overflow-y-auto flex flex-col items-center">
+      <div className="w-full p-6 overflow-y-auto hide-scrollbar flex flex-col items-center">
         <button
           onClick={onBack}
           className="absolute top-4 left-4 z-20 px-4 py-2 text-sm bg-white text-pink-700 rounded-full shadow hover:bg-white transition font-raleway"
