@@ -15,7 +15,7 @@ export default function FinishPage({ onBack }: FinishPageProps) {
     }, []);
 
     return (
-        <div className="h-screen bg-pink-100 items-center justify-center overflow-y-auto">
+        <div className="h-screen overflow-y-auto bg-pink-100 hide-scrollbar">
             <button
                 onClick={onBack}
                 className="absolute top-4 left-4 z-20 px-4 py-2 text-sm bg-white text-pink-700 rounded-full shadow hover:bg-white transition font-raleway"
@@ -29,7 +29,7 @@ export default function FinishPage({ onBack }: FinishPageProps) {
                 </h2>
                 <iframe
                     className="w-full aspect-video rounded-xl shadow-lg"
-                    src="https://www.youtube.com/embed/KmnhGc9LqEE?autoplay=1&playsinline=1&controls=1"
+                    src="https://www.youtube.com/embed/KmnhGc9LqEE?autoplay=1&mute=1&playsinline=1&controls=1"
                     allow="autoplay; encrypted-media"
                     allowFullScreen
                 ></iframe>
@@ -39,7 +39,7 @@ export default function FinishPage({ onBack }: FinishPageProps) {
             {/* Lyrics Section */}
             <div
                 ref={lyricsRef}
-                className="bg-white p-6 max-w-2xl w-full my-6 rounded-lg shadow-md border border-pink-200 overflow-y-auto max-h-[400px]"
+                className="bg-white p-6 max-w-2xl w-full my-6 rounded-lg shadow-md border border-pink-200 overflow-y-auto hide-scrollbar max-h-[400px]"
             >
                 <h3 className="text-xl font-semibold text-pink-600 mb-4">Lyrics: <span className="italic">"Woman" - JoRaffi</span></h3>
                 <pre className="whitespace-pre-wrap text-gray-800 text-sm leading-relaxed font-handlee">
