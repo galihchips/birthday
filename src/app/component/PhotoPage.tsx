@@ -39,24 +39,34 @@ export default function PhotoPage({ onNext, onBack }: PhotoPageProps) {
           {photos.map((src, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, scale: 0.95, filter: "blur(4px)" }}
-              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-              transition={{ delay: i * 1.2, duration: 1.2, ease: "easeOut" }}
-              className={`group w-full max-w-[160px] aspect-square border-4 border-pink-300 rounded-xl shadow-md p-2 bg-white flex items-center justify-center transition duration-500 hover:shadow-xl hover:scale-105 ${i === 4 ? "col-span-2 mx-auto" : ""
+              initial={{ opacity: 0, scale: 1 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: i * 1, duration: 1, ease: "easeOut" }}
+              className={`relative group w-full max-w-[160px] aspect-square border-4 border-pink-300 rounded-xl shadow-md p-2 bg-white flex items-center justify-center transition-all duration-500 hover:shadow-xl hover:scale-105 ${i === 4 ? "col-span-2 mx-auto" : ""
                 }`}
             >
+              {/* Decorations */}
+              {i !== 4 && (
+                <div className="absolute -top-3 -left-3 text-2xl rotate-[-15deg] z-10">🎀</div>
+              )}
+              {i === 4 && (
+                <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-3xl z-10">👑</div>
+              )}
+
               <Image
                 src={src}
                 alt={`Photo ${i + 1}`}
                 width={140}
                 height={140}
-                className="rounded-lg object-cover w-full h-full transition duration-700 group-hover:saturate-150 group-hover:contrast-125"
+                loading="lazy"
+                className="rounded-lg object-cover w-full h-full transition-opacity duration-700 opacity-0 group-hover:opacity-100"
+                onLoadingComplete={(img) => img.classList.remove("opacity-0")}
               />
             </motion.div>
           ))}
         </div>
 
-        {/* Continue Button */}
+
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
