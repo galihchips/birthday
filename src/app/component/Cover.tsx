@@ -63,7 +63,7 @@ export default function Cover({ onNext }: CoverProps) {
         <div className="flex justify-center">
           <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-pink-400 shadow-lg">
             <Image
-              src="/images/anna.jpg"
+              src="/images/anna.JPG"
               alt="Birthday Girl"
               width={160}
               height={160}
