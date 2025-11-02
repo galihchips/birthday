@@ -29,7 +29,7 @@ export default function FinishPage({ onBack }: FinishPageProps) {
                 </h2>
                 <iframe
                     className="w-full aspect-video rounded-xl shadow-lg"
-                    src="https://www.youtube.com/embed/KmnhGc9LqEE?autoplay=1&mute=1&playsinline=1&controls=1"
+                    src="https://www.youtube.com/embed/5g12MLvunm0?autoplay=1&mute=1&playsinline=1&controls=1&list=RD5g12MLvunm0"
                     allow="autoplay; encrypted-media"
                     allowFullScreen
                 ></iframe>
@@ -41,63 +41,56 @@ export default function FinishPage({ onBack }: FinishPageProps) {
                 ref={lyricsRef}
                 className="bg-white p-6 max-w-2xl w-full my-6 rounded-lg shadow-md border border-pink-200 overflow-y-auto hide-scrollbar max-h-[400px]"
             >
-                <h3 className="text-xl font-semibold text-pink-600 mb-4">Lyrics: <span className="italic">"Woman" - JoRaffi</span></h3>
-                <pre className="whitespace-pre-wrap text-gray-800 text-sm leading-relaxed font-handlee">
-                    {`Are you that happy?
-I’ve waited for that smile for so long
-Do you really love me?
-'Cause I don’t think I'm where I belong
-All the time we spent alone is part of my dreams
-I can't believe I pulled you
-You’re out of my league
+                <h3 className="text-xl font-semibold text-pink-600 mb-4">
+                    Lyrics: <span className="italic">"Cintanya Aku" - Tiara Andini & Arsy Widianto</span>
+                </h3>
+<pre className="whitespace-pre-wrap text-gray-800 text-sm leading-relaxed font-handlee">
+{`Tergetar aku tepat di hadapanmu
+Debar jantungku berdetak saat kugenggam tanganmu
+Beruntung aku kini dapatkan cintamu
+Yang tercantik di hatiku sejak awal ku bertemu
 
-A whole day with you is enough
-Oh, but now we have forever
-Please don’t change
-As we growin’ up I hope you won’t change
-Please don’t forget what we put in our plans
-In this world just you and me till' the end
+Janji padaku jangan kau lukai
+Hati seperti kisah yang lalu
 
-'Cause I won’t change
-As my hair turns white I will stay the same
-Whenever you need me
-Oh, I will be there
-'Cause now or forever I swear I won’t change
+Kau bukan cinta pertamaku
+Namun aku berharap
+Mulai hari ini saat ini
+Engkau cintanya aku
 
-Where have you been?
-I’ve struggled with heartbreaks for years and got nothin’
-But I know this time you're the one
-Oh, I know you won’t let me go
+Yang kurasakan denganmu semua berbeda
+Kekasih yang baik hati kini ada di sampingku
 
-All the night we spent alone is part of my dreams
-I can't believe I got you
-You’re out of my league
+Janji padaku jangan ada lagi
+Hati yang lain selain aku (oh)
 
-A whole day with you is never enough
-But we have forever
-Please don’t change
-As we growin’ up I hope you won’t change
-Please don’t forget what we put in our plans
-In this world just you and me till’ the end
+Kau bukan cinta pertamaku
+Namun aku berharap
+Mulai hari ini saat ini
+Engkau cintanya aku
 
-'Cause I won’t change
-As my hair turns white I will stay the same
-Whenever you need me
-Oh, I will be there
-'Cause now or forever I swear I won’t change
+Jangan pernah ragukan kesetiaan hatiku (oh)
+Ku tak inginkan bila ini terbagi cinta wo
 
-Please don’t change
-As we growin’ up I hope you won’t change
-Please don’t forget what we put in our plans
-In this world just you and me till’ the end
+Engkau cintanya aku
+Kau bukan cinta pertamaku (oh)
+Namun aku berharap
+Mulai hari ini saat ini
+Engkau cintanya aku
 
-'Cause I won’t change
-As my hair turns white I will stay the same
-When we turned 80 we’d still holdin’ hands
-You’re my whole world
-Oh, I swear it won’t change
-Change`}
-                </pre>
+Kau bukan cinta pertamaku
+Namun aku berharap
+Mulai hari ini saat ini
+Engkau cintanya aku
+
+Mulai hari ini saat ini
+Engkau cintanya aku
+
+Hm
+Satu untuk selamanya
+Ho ho ho`}
+</pre>
+
             </div>
         </div>
     );

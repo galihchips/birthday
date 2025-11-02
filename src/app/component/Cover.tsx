@@ -63,7 +63,7 @@ export default function Cover({ onNext }: CoverProps) {
         <div className="flex justify-center">
           <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-pink-400 shadow-lg">
             <Image
-              src="/images/angel.jpg"
+              src="/images/anna.jpg"
               alt="Birthday Girl"
               width={160}
               height={160}
@@ -72,7 +72,7 @@ export default function Cover({ onNext }: CoverProps) {
           </div>
         </div>
         <h1 className="text-3xl font-playfair text-pink-700 drop-shadow-xl">
-          Happy Birthday, Angel!{" "}
+          Happy Birthday, Anna!{" "}
         </h1>
         <button
           className="mt-4 px-6 py-2 bg-pink-600 font-raleway text-white rounded-full shadow-md hover:bg-pink-700 transition"

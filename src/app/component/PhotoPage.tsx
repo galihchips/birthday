@@ -3,11 +3,11 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const photos = [
-  "/images/p1.JPG",
-  "/images/p2.JPG",
-  "/images/p3.JPG",
-  "/images/p4.JPG",
-  "/images/p5.JPG",
+  "/images/photo1.JPG",
+  "/images/photo2.JPG",
+  "/images/photo3.JPG",
+  "/images/photo4.JPG",
+  "/images/photo5.JPG",
 ];
 
 type PhotoPageProps = {
