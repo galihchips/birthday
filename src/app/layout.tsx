@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/angel.jpg",
+        url: "/anna.jpg",
         width: 1200,
         height: 630,
         alt: "Happy Birthday Banner",
