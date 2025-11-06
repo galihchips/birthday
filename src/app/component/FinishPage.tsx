@@ -27,71 +27,62 @@ export default function FinishPage({ onBack }: FinishPageProps) {
                 <h2 className="text-2xl text-center text-pink-600 font-playfair mt-16 mb-6">
                     This song is for you baby💖
                 </h2>
-                <iframe
-                    className="w-full aspect-video rounded-xl shadow-lg"
-                    src="https://www.youtube.com/embed/5g12MLvunm0?autoplay=1&mute=1&playsinline=1&controls=1&list=RD5g12MLvunm0"
-                    allow="autoplay; encrypted-media"
-                    allowFullScreen
+               <iframe
+                className="w-full aspect-video rounded-xl shadow-lg"
+                src="https://www.youtube.com/embed/HLpq2oVz-tk?autoplay=1&mute=1&playsinline=1&controls=1&list=RDHLpq2oVz-tk"
+                allow="autoplay; encrypted-media"
+                allowFullScreen
                 ></iframe>
 
             </div>
 
             {/* Lyrics Section */}
             <div
-                ref={lyricsRef}
-                className="bg-white p-6 max-w-2xl w-full my-6 rounded-lg shadow-md border border-pink-200 overflow-y-auto hide-scrollbar max-h-[400px]"
-            >
-                <h3 className="text-xl font-semibold text-pink-600 mb-4">
-                    Lyrics: <span className="italic">"Cintanya Aku" - Tiara Andini & Arsy Widianto</span>
-                </h3>
-<pre className="whitespace-pre-wrap text-gray-800 text-sm leading-relaxed font-handlee">
-{`Tergetar aku tepat di hadapanmu
-Debar jantungku berdetak saat kugenggam tanganmu
-Beruntung aku kini dapatkan cintamu
-Yang tercantik di hatiku sejak awal ku bertemu
+  ref={lyricsRef}
+  className="bg-white p-6 max-w-2xl w-full my-6 rounded-lg shadow-md border border-pink-200 overflow-y-auto hide-scrollbar max-h-[400px]"
+>
+  <h3 className="text-xl font-semibold text-pink-600 mb-4">
+    Lyrics: <span className="italic">"Percayalah" - Raisa & Afgan</span>
+  </h3>
+  <pre className="whitespace-pre-wrap text-gray-800 text-sm leading-relaxed font-handlee">
+{`Aku yang tak akan melepaskan
+Kamu yang mengenggam hatiku
+Kita tak kan mungkin terpisahkan
+Biarlah terjadi apapun yang terjadi
 
-Janji padaku jangan kau lukai
-Hati seperti kisah yang lalu
+Aku yang tak bisa melepaskan
+Kamu yang miliki hatiku
+Walau terlalu cepat
+Bagi kita berdua
+Untuk mengatakan
 
-Kau bukan cinta pertamaku
-Namun aku berharap
-Mulai hari ini saat ini
-Engkau cintanya aku
+Selamanya kita akan bersama
+Melewati segalanya
+Yang dapat pisahkan kita berdua
+Selamanya kita akan bersama
+Tak kan ada keraguan
+Kini dan nanti
+Percayalah
 
-Yang kurasakan denganmu semua berbeda
-Kekasih yang baik hati kini ada di sampingku
+Aku yang tak bisa melepaskan
+Kamu yang mengenggam hatiku
+Walau mungkin terlalu cepat
+Bagi kita berdua
+Untuk mengatakan
 
-Janji padaku jangan ada lagi
-Hati yang lain selain aku (oh)
+Selamanya kita akan bersama
+Melewati segalanya
+Yang dapat pisahkan kita berdua
+Selamanya kita akan bersama
+Tak kan ada keraguan
+Kini dan nanti
+Percayalah
 
-Kau bukan cinta pertamaku
-Namun aku berharap
-Mulai hari ini saat ini
-Engkau cintanya aku
-
-Jangan pernah ragukan kesetiaan hatiku (oh)
-Ku tak inginkan bila ini terbagi cinta wo
-
-Engkau cintanya aku
-Kau bukan cinta pertamaku (oh)
-Namun aku berharap
-Mulai hari ini saat ini
-Engkau cintanya aku
-
-Kau bukan cinta pertamaku
-Namun aku berharap
-Mulai hari ini saat ini
-Engkau cintanya aku
-
-Mulai hari ini saat ini
-Engkau cintanya aku
-
-Hm
-Satu untuk selamanya
-Ho ho ho`}
-</pre>
-
-            </div>
+Hanya dirimu satu-satunya
+Tercipta untukku
+`}
+  </pre>
+</div>
         </div>
     );
 }
